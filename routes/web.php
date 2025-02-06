@@ -90,7 +90,7 @@ Route::get('/', function () {
         Route::get('/experience/{id}/edit', [ExperienceController::class, 'edit'])->name('experience.edit');
         Route::put('/experience/{id}', [ExperienceController::class, 'update'])->name('experience.update');
         Route::delete('/experience/{id}', [ExperienceController::class, 'destroy'])->name('experience.destroy');
-    
+
 
     // Portfolio routes
     Route::prefix('portfolio')->group(function () {
