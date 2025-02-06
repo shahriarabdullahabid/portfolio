@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 
 // Protect all admin routes inside this group
-Route::middleware([AuthMiddleware::class])->group(function () {
+
 
 
     // Default route with a name 'admin'
@@ -90,7 +90,7 @@ Route::middleware([AuthMiddleware::class])->group(function () {
         Route::get('/experience/{id}/edit', [ExperienceController::class, 'edit'])->name('experience.edit');
         Route::put('/experience/{id}', [ExperienceController::class, 'update'])->name('experience.update');
         Route::delete('/experience/{id}', [ExperienceController::class, 'destroy'])->name('experience.destroy');
-    });
+    
 
     // Portfolio routes
     Route::prefix('portfolio')->group(function () {
