@@ -23,11 +23,11 @@ Route::get('/', function () {
 
 // Protect all admin routes inside this group
 Route::middleware([AuthMiddleware::class])->group(function () {
-       
-    
+
+
     // Default route with a name 'admin'
     Route::get('/admin', [AuthController::class, 'showDashboard'])->name('admin');
-    
+
     // Rest of your routes...
     //logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -75,7 +75,7 @@ Route::middleware([AuthMiddleware::class])->group(function () {
         Route::match(['POST', 'PUT'], '/about/storeOrUpdate', [AboutController::class, 'storeOrUpdate'])->name('about.storeOrUpdate');
         Route::get('/about/edit/{id}', [AboutController::class, 'edit'])->name('about.edit');
         Route::delete('/about/destroy/{id}', [AboutController::class, 'destroy'])->name('about.destroy');
-        
+
         Route::get('/skills', [SkillsController::class, 'index'])->name('skills.index');
         Route::get('/skills/create', [SkillsController::class, 'create'])->name('skills.create');
         Route::post('/skills', [SkillsController::class, 'store'])->name('skills.store');
@@ -100,7 +100,7 @@ Route::middleware([AuthMiddleware::class])->group(function () {
         Route::put('/{id}', [PortfolioController::class, 'update'])->name('portfolio.update');
         Route::delete('/{id}', [PortfolioController::class, 'destroy'])->name('portfolio.destroy');
     });
-  
+
 
 });
 
@@ -132,5 +132,5 @@ Route::post('resend-verification-code', [AuthController::class, 'resendVerificat
 
 use App\Http\Middleware\VerifyCodeMiddleware;
 
-Route::get('/reset', [AuthController::class, 'showReset'])->name('update')->middleware(VerifyCodeMiddleware::class);
-Route::post('/reset', [AuthController::class, 'reset'])->name('update-credentials')->middleware(VerifyCodeMiddleware::class);
+Route::get('/reset', [AuthController::class, 'showReset'])->name('update');
+Route::post('/reset', [AuthController::class, 'reset'])->name('update-credentials');
